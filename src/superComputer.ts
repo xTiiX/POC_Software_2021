@@ -11,8 +11,8 @@ type Callback = {
   (err: null, result: number): number
 };
 
-function callback(err: Error, result?: undefined): Error;
-function callback(err: null, result: number): number;
+export function callback(err: Error, result?: undefined): Error;
+export function callback(err: null, result: number): number;
 
 export function callback(err: Error | null, result: number): Error | number {
   if (err) {
@@ -28,23 +28,43 @@ export function superComputer(nb1: number, sign: string, nb2: number, cb): Error
   let err;
   switch (sign) {
     case signType.plus: {
-      try { res = nb1 + nb2; } catch (e) { err = e; }
+      try {
+        res = nb1 + nb2;
+      } catch (e) {
+        err = e;
+      }
       break;
     }
     case signType.minus: {
-      try { res = nb1 - nb2; } catch (e) { err = e; }
+      try {
+        res = nb1 - nb2;
+      } catch (e) {
+        err = e;
+      }
       break;
     }
     case signType.multi: {
-      try { res = nb1 * nb2; } catch (e) { err = e; }
+      try {
+        res = nb1 * nb2;
+      } catch (e) {
+        err = e;
+      }
       break;
     }
     case signType.div: {
-      try { res = nb1 / nb2; } catch (e) { err = e; }
+      try {
+        res = nb1 / nb2;
+      } catch (e) {
+        err = e;
+      }
       break;
     }
     case signType.mod: {
-      try { res = nb1 % nb2; } catch (e) { err = e; }
+      try {
+        res = nb1 % nb2;
+      } catch (e) {
+        err = e;
+      }
       break;
     }
     default:

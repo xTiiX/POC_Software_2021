@@ -14,7 +14,7 @@ type Callback = {
 function callback(err: Error, result?: undefined): Error;
 function callback(err: null, result: number): number;
 
-function callback(err: Error | null, result: number): Error | number {
+export function callback(err: Error | null, result: number): Error | number {
   if (err) {
     console.log(err.message);
     return err;
@@ -23,7 +23,7 @@ function callback(err: Error | null, result: number): Error | number {
   return result;
 }
 
-function superComputer(nb1: number, sign: string, nb2: number, cb) {
+export function superComputer(nb1: number, sign: string, nb2: number, cb): Error | number {
   let res: number;
   let err;
   switch (sign) {
@@ -48,7 +48,8 @@ function superComputer(nb1: number, sign: string, nb2: number, cb) {
       break;
     }
     default:
-      err = 0;
+      console.log('Bad operator');
+      return 0;
   }
   return cb(err, res);
 }

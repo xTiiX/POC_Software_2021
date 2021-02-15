@@ -15,9 +15,12 @@
     "eslint-plugin-import": "^2.22.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
     "superComputer": "ts-node src/superComputer.ts",
+    "createCosmo": "ts-node src/createCosmonaut.ts",
+    "test": "jest tests --env=node",
+    "test:cov": "jest --coverage tests --env=node",
+    "test:watch": "jest --watchAll tests --env=node",
     "lint": "eslint src/**/*",
     "lint:format": "eslint --fix src/**/*"
   },

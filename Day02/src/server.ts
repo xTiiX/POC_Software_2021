@@ -1,13 +1,18 @@
-import express, { Request, Response } from 'express';
+import express, { Request } from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import { serverPort, helloMessage } from './serverConfig';
 
 const server = express();
 server.use(bodyParser.json());
 server.use(cookieParser());
 
-server.get('/hello', (req: Request, res: Response) => {
-  res.send('world');
+server.get('/hello', (req: Request, res: any) => {
+  if (helloMessage) {
+    res.send(helloMessage);
+  } else {
+    res.send(404, 'No Message Defined');
+  }
 });
 
 server.get('/repeat-my-query', (req: Request, res: any) => {
@@ -48,4 +53,4 @@ server.get('/repeat-my-cookie', (req: Request, res: any) => {
   }
 });
 
-server.listen(8080);
+server.listen(serverPort);

@@ -4,6 +4,7 @@
   "description": "day 01",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.5"
   },
@@ -19,14 +20,14 @@
     "ts-jest": "^26.5.1"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "superComputer": "ts-node src/superComputer.ts",
-    "createCosmo": "ts-node src/createCosmonaut.ts",
-    "test": "jest tests --env=node",
-    "test:cov": "jest --coverage tests --env=node",
-    "test:watch": "jest --watchAll tests --env=node",
-    "lint": "eslint src/**/*",
-    "lint:format": "eslint --fix src/**/*"
+    "start": "../node_modules/.bin/ts-node src/index.ts",
+    "superComputer": "../node_modules/.bin/ts-node src/superComputer.ts",
+    "createCosmo": "../node_modules/.bin/ts-node src/createCosmonaut.ts",
+    "test": "../node_modules/.bin/jest tests --env=node",
+    "test:cov": "../node_modules/.bin/jest --coverage tests --env=node",
+    "test:watch": "../node_modules/.bin/jest --watchAll tests --env=node",
+    "lint": "../node_modules/.bin/eslint src/**/*",
+    "lint:format": "../node_modules/.bin/eslint --fix src/**/*"
   },
   "author": "",
   "license": "ISC"

@@ -1,6 +1,7 @@
 import express, { Request } from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 import { serverPort, helloMessage } from './serverConfig';
 
 const server = express();
@@ -11,7 +12,7 @@ server.get('/hello', (req: Request, res: any) => {
   if (helloMessage) {
     res.send(helloMessage);
   } else {
-    res.send(404, 'No Message Defined');
+    res.send(StatusCodes.NOT_FOUND, 'No Message Defined');
   }
 });
 
@@ -20,7 +21,8 @@ server.get('/repeat-my-query', (req: Request, res: any) => {
   if (msg) {
     res.send(msg);
   } else {
-    res.send(400, 'Bad Request');
+    res.status(StatusCodes.BAD_REQUEST);
+    res.send(ReasonPhrases.BAD_REQUEST);
   }
 });
 
@@ -30,26 +32,29 @@ server.get('/repeat-my-param/:message', (req: Request, res: any) => {
 });
 
 server.post('/repeat-my-body', (req: Request, res: any) => {
-  if (res.body.message) {
-    res.send(res.body.message);
+  if (req.body.message) {
+    res.send(req.body.message);
   } else {
-    res.send(400, 'Bad Request');
+    res.status(StatusCodes.BAD_REQUEST);
+    res.send(ReasonPhrases.BAD_REQUEST);
   }
 });
 
 server.get('/repeat-my-header', (req: Request, res: any) => {
-  if (res.header.message) {
-    res.send(res.header.message);
+  if (req.body.header) {
+    res.send(req.body.header);
   } else {
-    res.send(400, 'Bad Request');
+    res.status(StatusCodes.BAD_REQUEST);
+    res.send(ReasonPhrases.BAD_REQUEST);
   }
 });
 
 server.get('/repeat-my-cookie', (req: Request, res: any) => {
-  if (res.cookies.message) {
-    res.send(res.cookies.message);
+  if (req.cookies.message) {
+    res.send(req.cookies.message);
   } else {
-    res.send(400, 'Bad Request');
+    res.status(StatusCodes.BAD_REQUEST);
+    res.send(ReasonPhrases.BAD_REQUEST);
   }
 });
 
